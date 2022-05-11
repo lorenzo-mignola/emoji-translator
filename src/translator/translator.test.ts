@@ -32,3 +32,11 @@ test('should return 🐶 given "dog face"', async t => {
 
   t.equal(translatedText, '🐶', 'dog face');
 });
+
+test('should return "a 🐶 live in my 🏠" given "a dog face live in my house"', async t => {
+  const plainText = 'a dog face live in my house';
+
+  const translatedText = translateToEmoji(plainText);
+
+  t.equal(translatedText, 'a 🐶 live in my 🏠', 'dog face and house');
+});
