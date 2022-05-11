@@ -6,9 +6,10 @@
     "lib": [
       "esnext"
     ],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "include": [
-    "srcs"
+    "src"
   ]
 }
