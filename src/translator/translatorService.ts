@@ -26,11 +26,18 @@ const translate = (splitted: string[]) => (word: string, index: number) => {
   const nextWord = splitted[index + 1];
   const previousWord = splitted[index - 1];
 
+  const twoWorldEmojiPrevious = translateTwoWord(previousWord, word);
+  const isPreviousWordTranslated = isTranslated(
+    joinWords(previousWord, word),
+    twoWorldEmojiPrevious
+  );
+
+  if (isPreviousWordTranslated) {
+    return null;
+  }
+
   if (!nextWord) {
-    const twoWorldEmojiPrevious = translateTwoWord(previousWord, word);
-    return isTranslated(joinWords(previousWord, word), twoWorldEmojiPrevious)
-      ? null
-      : translateWord(word);
+    return translateWord(word);
   }
 
   const twoWorldEmoji = translateTwoWord(word, nextWord);

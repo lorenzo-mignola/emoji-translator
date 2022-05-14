@@ -40,3 +40,11 @@ test('should return "a 🐶 live in my 🏠" given "a dog face live in my house"
 
   t.equal(translatedText, 'a 🐶 live in my 🏠', 'dog face and house');
 });
+
+test('should return "my 👋 is white" given "my waving hand is white"', async t => {
+  const plainText = 'my waving hand is white';
+
+  const translatedText = translateToEmoji(plainText);
+
+  t.equal(translatedText, 'my 👋 is white', 'waving hand is white');
+});
