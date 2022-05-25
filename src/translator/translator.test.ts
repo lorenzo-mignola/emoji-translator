@@ -158,3 +158,33 @@ test('should return "OMG!!! The 🏠 is on 🔥 and the 🐈 is eating all the �
     'response'
   );
 });
+
+test('should return "1️⃣ 🍍!" given "1 pineapple!"', async t => {
+  const app = build();
+
+  const response = await app.inject({
+    method: 'GET',
+    url: '/translator',
+    query: {
+      text: '1 pineapple!'
+    },
+    headers: authHeaders
+  });
+  t.equal(response.statusCode, 200, 'auth');
+  t.equal(response.body, '1️⃣ 🍍!', 'response');
+});
+
+test('should return "many 🍍!" given "many pineapple!"', async t => {
+  const app = build();
+
+  const response = await app.inject({
+    method: 'GET',
+    url: '/translator',
+    query: {
+      text: 'many pineapple!'
+    },
+    headers: authHeaders
+  });
+  t.equal(response.statusCode, 200, 'auth');
+  t.equal(response.body, 'many 🍍!', 'response');
+});
